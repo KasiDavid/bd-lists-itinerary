@@ -2,6 +2,7 @@ package com.amazon.ata.lists;
 
 import com.amazon.ata.resources.lists.prework.Destination;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ import java.util.List;
  * and get the total number of days that will be spent in trip.
  */
 public class Itinerary {
+    List<Destination> destinations = new ArrayList<>();
     /**
      * Add a new destination to the end of itinerary.
      *
@@ -17,6 +19,7 @@ public class Itinerary {
      */
     public void addDestination(Destination destination) {
         // Implement the method here
+        destinations.add(destination);
     }
 
     /**
@@ -27,7 +30,7 @@ public class Itinerary {
      */
     public Destination getDestination(int position) {
         // Implement the method here
-        return null;
+        return destinations.get(position);
     }
 
     /**
@@ -38,7 +41,7 @@ public class Itinerary {
      */
     public Destination removeDestination(int position) {
         // Implement the method here
-        return null;
+        return destinations.remove(position);
     }
 
 
@@ -50,7 +53,11 @@ public class Itinerary {
      */
     public List<String> getListOfLocations() {
         // Implement the method here
-        return null;
+        List<String> locations = new ArrayList<>();
+        for (int i =0; i < destinations.size(); i++){
+            locations.add(destinations.get(i).getLocation());
+        }
+        return locations;
     }
 
     /**
@@ -61,7 +68,11 @@ public class Itinerary {
      */
     public int getTotalNumberOfDays() {
         // Implement the method here
-        return -1;
+        int numOfDays = 0;
+        for (int i=0; i<destinations.size(); i++){
+            numOfDays += destinations.get(i).getDaysAtLocation();
+        }
+        return numOfDays;
     }
 
     /**
@@ -71,6 +82,6 @@ public class Itinerary {
      */
     public int getNumberOfDestinations() {
         // Implement the method here
-        return -1;
+        return destinations.size();
     }
 }
